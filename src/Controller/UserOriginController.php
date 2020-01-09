@@ -90,7 +90,7 @@ class UserOriginController extends AbstractController
      */
     public function delete(Request $request, UserOrigin $userOrigin): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$userOrigin->getRowid(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $userOrigin->getRowid(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($userOrigin);
             $entityManager->flush();
@@ -98,4 +98,15 @@ class UserOriginController extends AbstractController
 
         return $this->redirectToRoute('user_origin_index');
     }
+
+    /**
+     * @Route("/connecter", name="user_connected", methods={"GET"})
+     */
+   /* public function userConnecter()
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+        var_dump($user);
+        die;
+    }*/
 }

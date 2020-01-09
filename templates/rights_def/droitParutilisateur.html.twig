@@ -38,21 +38,30 @@
                             </tr>
                         </thead>
                         <tbody>
+
+                          {#{
+                            DESACTIVER LIEN HTML
+                            class="btn  disabled"
+                            onclick('return false')
+                          }#}
+                        
                          
                             {#{dump(rights_defs)}}
                             {{dump(droitactiver)}#}  
-                         
+                          
+                       
                         {% set i = 0 %}
                         {% for value in rights_defs %}
                             <tr>
                                 <td><p>{{value.rd_module }}</p></td>
                                 <td>
+                          {% if app.user.admin == 1 %}
 
                                   {% if droitactiver[i] is defined %}
                   
                                         {% if(droitactiver[i].ur_fkId  in [value.rd_id])%}
                                               <div class="pull-left">
-                                                  <a href="{{ path('desactiver_droit', {'fk_id': droitactiver[i].ur_fkId,'fk_user':droitactiver[i].ur_fkUser}) }}">
+                                                  <a  href="{{ path('desactiver_droit', {'fk_id': droitactiver[i].ur_fkId,'fk_user':droitactiver[i].ur_fkUser}) }}">
                                                       <span class="glyphicon glyphicon-minus"></span>
                                                   </a>
                                               </div>
@@ -61,11 +70,11 @@
                                                       <span class="glyphicon glyphicon-ok"></span>
                                                   </b>
                                               </div>
-                                          {% set i = i + 1 %}
-                                              
-                                          {% if i  == droitactiver|length %}
-                                            {% set i = i - 1 %}
-                                          {% endif %}
+                                              {% set i = i + 1 %}
+                                                  
+                                              {% if i  == droitactiver|length %}
+                                                {% set i = i - 1 %}
+                                              {% endif %}
                                         {% else %}
                                             {% if(droitactiver[i].ur_fkId  not in [value.rd_id]) %}
                                                   <a href="{{ path('activer_droit', {'fk_id': value.rd_id,'fk_user':droitactiver[i].ur_fkUser}) }}">
@@ -79,11 +88,49 @@
                                         <span class="glyphicon glyphicon-plus"></span>
                                       </a>
                                   {% endif %}
+
+
+                          {% else %}
+                            
+                          {% if droitactiver[i] is defined %}
+                                            
+                              {% if(droitactiver[i].ur_fkId  in [value.rd_id])%}
+                                    <div class="pull-left">
+                                        <a  href="{{ path('desactiver_droit', {'fk_id': droitactiver[i].ur_fkId,'fk_user':droitactiver[i].ur_fkUser}) }}" class="btn  disabled">
+                                            <span class="glyphicon glyphicon-minus"></span>
+                                        </a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <b>
+                                            <span class="glyphicon glyphicon-ok"></span>
+                                        </b>
+                                    </div>
+                                    {% set i = i + 1 %}
+                                        
+                                    {% if i  == droitactiver|length %}
+                                      {% set i = i - 1 %}
+                                    {% endif %}
+                              {% else %}
+                                  {% if(droitactiver[i].ur_fkId  not in [value.rd_id]) %}
+                                        <a href="{{ path('activer_droit', {'fk_id': value.rd_id,'fk_user':droitactiver[i].ur_fkUser}) }}" class="btn  disabled">
+                                          <span class="glyphicon glyphicon-plus"></span>
+                                        </a> 
+                                  {% endif %} 
+                              {% endif %} 
+
+                            {% else %}
+                              <a href="{{ path('activer_droit', {'fk_id': value.rd_id,'fk_user':sessionuser}) }}" class="btn  disabled">
+                                <span class="glyphicon glyphicon-plus"></span>
+                              </a>
+                            {% endif %}
+
+                          {% endif %}
                                 </td>
                                 <td><p>{{ value.rd_libelle }}</p></td>
                             </tr>
                             
                         {% endfor %}
+
                         </tbody>
                     </table>
                   </div>
