@@ -1,13 +1,33 @@
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        App\Entity\UserOrigin:
+            algorithm: md5
+            encode_as_base64: false
+            iterations:       1
     providers:
         in_memory: { memory: null }
+        in_database:
+            entity:
+                class: App\Entity\UserOrigin
+                property: login
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: lazy
+            anonymous: true
+
+            provider: in_database
+
+            form_login:
+                login_path: security_login
+                check_path: security_login
+                default_target_path: /pointage
+                
+            
+            logout:
+                path: security_logout
+                target: /user/origin/list
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -20,3 +40,11 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/pointage, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/user/origin/registration, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/permission/liste, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/user/origin/list, roles: ROLE_USER }
+        - { path: ^/permission/droit/, roles: IS_AUTHENTICATED_FULLY }
+        
+        
+        

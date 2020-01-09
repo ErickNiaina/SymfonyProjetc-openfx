@@ -3,14 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * UserOrigin
  *
- * @ORM\Table(name="user_origin", uniqueConstraints={@ORM\UniqueConstraint(name="uk_user_fk_member", columns={"fk_member"}), @ORM\UniqueConstraint(name="uk_user_api_key", columns={"api_key"}), @ORM\UniqueConstraint(name="uk_user_login", columns={"login", "entity"}), @ORM\UniqueConstraint(name="uk_user_fk_socpeople", columns={"fk_socpeople"})}, indexes={@ORM\Index(name="idx_user_fk_societe", columns={"fk_soc"})})
+ * @ORM\Table(name="user_origin", uniqueConstraints={@ORM\UniqueConstraint(name="uk_user_login", columns={"login", "entity"}), @ORM\UniqueConstraint(name="uk_user_fk_socpeople", columns={"fk_socpeople"}), @ORM\UniqueConstraint(name="uk_user_api_key", columns={"api_key"}), @ORM\UniqueConstraint(name="uk_user_fk_member", columns={"fk_member"})}, indexes={@ORM\Index(name="idx_user_fk_societe", columns={"fk_soc"})})
  * @ORM\Entity
  */
-class UserOrigin
+class UserOrigin implements UserInterface
 {
     /**
      * @var int
@@ -54,7 +55,7 @@ class UserOrigin
      *
      * @ORM\Column(name="fk_establishment", type="integer", nullable=true)
      */
-    private $fkEstablishment;
+    private $fkEstablishment = '0';
 
     /**
      * @var \DateTime|null
@@ -173,14 +174,14 @@ class UserOrigin
      *
      * @ORM\Column(name="fk_state", type="integer", nullable=true)
      */
-    private $fkState;
+    private $fkState = '0';
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="fk_country", type="integer", nullable=true)
      */
-    private $fkCountry;
+    private $fkCountry = '0';
 
     /**
      * @var string|null
@@ -236,7 +237,7 @@ class UserOrigin
      *
      * @ORM\Column(name="admin", type="smallint", nullable=true)
      */
-    private $admin;
+    private $admin = '0';
 
     /**
      * @var int|null
@@ -369,7 +370,7 @@ class UserOrigin
      *
      * @ORM\Column(name="fk_barcode_type", type="integer", nullable=true)
      */
-    private $fkBarcodeType;
+    private $fkBarcodeType = '0';
 
     /**
      * @var string|null
@@ -383,7 +384,7 @@ class UserOrigin
      *
      * @ORM\Column(name="nb_holiday", type="integer", nullable=true)
      */
-    private $nbHoliday;
+    private $nbHoliday = '0';
 
     /**
      * @var float|null
@@ -506,7 +507,7 @@ class UserOrigin
 
     public function getTms(): ?\DateTimeInterface
     {
-        return $this->tms;
+        return $this->tms = (new \DateTime());
     }
 
     public function setTms(\DateTimeInterface $tms): self
@@ -1127,6 +1128,34 @@ class UserOrigin
 
         return $this;
     }
+
+
+    public function eraseCredentials()
+    {
+        
+    }
+
+    public function getUsername()
+    {
+        return (string) $this->login;
+    }
+
+    public function getPassword()
+    {
+        return $this->getPassCrypted();
+    }
+
+    public function getSalt()
+    {
+        
+    }
+
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
+    }
+
+    
 
 
 }

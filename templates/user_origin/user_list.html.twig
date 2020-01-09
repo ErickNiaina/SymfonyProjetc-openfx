@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1>Listes Utilisateurs</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
+                  <table id="example1" class="table table-responsive-md table-condensed" role="grid">
+                    <thead>
+                        <tr>
+                            <th>Rowid</th>
+                            <th>Employee</th>
+                            <th>Datec</th>
+                            <th>Tms</th>
+                            <th>Lastname</th>
+                            <th>Firstname</th>
+                            <th>Email</th>
+                            <th>Admin</th>
+                            <th>Statut</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user_origin in user_origins %}
+                            <tr>
+                                <td>{{ user_origin.rowid }}</td>
+                                <td>{{ user_origin.employee ? 'Yes' : 'No' }}</td>
+                                <td>{{ user_origin.datec ? user_origin.datec|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ user_origin.tms ? user_origin.tms|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>{{ user_origin.lastname }}</td>
+                                <td>{{ user_origin.firstname }}</td>
+                                <td>{{ user_origin.email }}</td>
+                                <td>{{ user_origin.admin }}</td>
+                                <td>{{ user_origin.statut ? 'Yes' : 'No' }}</td>
+                                <td>
+                                    <a href="{{ path('user_origin_show', {'rowid': user_origin.rowid}) }}" class="btn btn-warning">show</a>
+                                    <a href="{{ path('user_origin_edit', {'rowid': user_origin.rowid}) }}" class="btn btn-primary">edit</a>
+                                    <a href="{{ path('activation_droit', {'rowid': user_origin.rowid}) }}" class="btn btn-success">voir droit</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="60">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    <a href="{{ path('user_origin_new') }}" class="btn btn-success">Create new</a>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

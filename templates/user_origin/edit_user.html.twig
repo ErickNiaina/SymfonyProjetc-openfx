@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification d'utilisateur{% endblock %}
+
+{% block body %}
+
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1>Modifier Utilisateur :</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
+                    
+                    {{ include('user_origin/user_form.html.twig', {'button_label': 'Update'}) }}
+
+                        <a href="{{ path('user_origin_index') }}" class="btn btn-primary">back to list</a>
+
+                    {{ include('user_origin/user_delete_form.html.twig') }}
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

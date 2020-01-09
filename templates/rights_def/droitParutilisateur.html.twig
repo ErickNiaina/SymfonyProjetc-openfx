@@ -1,0 +1,105 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/buttonSwitch.css">
+{% endblock %}
+
+{% block body %}
+
+<div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+              <h1>Configuration des droits</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td style="color: blueviolet">Module</td>
+                                <td></td>
+                                <td style="color: blueviolet">Droit</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                         
+                            {#{dump(rights_defs)}}
+                            {{dump(droitactiver)}#}  
+                         
+                        {% set i = 0 %}
+                        {% for value in rights_defs %}
+                            <tr>
+                                <td><p>{{value.rd_module }}</p></td>
+                                <td>
+
+                                  {% if droitactiver[i] is defined %}
+                  
+                                        {% if(droitactiver[i].ur_fkId  in [value.rd_id])%}
+                                              <div class="pull-left">
+                                                  <a href="{{ path('desactiver_droit', {'fk_id': droitactiver[i].ur_fkId,'fk_user':droitactiver[i].ur_fkUser}) }}">
+                                                      <span class="glyphicon glyphicon-minus"></span>
+                                                  </a>
+                                              </div>
+                                              <div class="pull-right">
+                                                  <b>
+                                                      <span class="glyphicon glyphicon-ok"></span>
+                                                  </b>
+                                              </div>
+                                          {% set i = i + 1 %}
+                                              
+                                          {% if i  == droitactiver|length %}
+                                            {% set i = i - 1 %}
+                                          {% endif %}
+                                        {% else %}
+                                            {% if(droitactiver[i].ur_fkId  not in [value.rd_id]) %}
+                                                  <a href="{{ path('activer_droit', {'fk_id': value.rd_id,'fk_user':droitactiver[i].ur_fkUser}) }}">
+                                                    <span class="glyphicon glyphicon-plus"></span>
+                                                  </a> 
+                                            {% endif %} 
+                                        {% endif %} 
+
+                                  {% else %}
+                                      <a href="{{ path('activer_droit', {'fk_id': value.rd_id,'fk_user':sessionuser}) }}">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                      </a>
+                                  {% endif %}
+                                </td>
+                                <td><p>{{ value.rd_libelle }}</p></td>
+                            </tr>
+                            
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+{% endblock %}
