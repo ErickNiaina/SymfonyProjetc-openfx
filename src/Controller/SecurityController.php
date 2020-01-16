@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+
+
 
 class SecurityController extends AbstractController
 {
@@ -23,5 +26,10 @@ class SecurityController extends AbstractController
     public function logout()
     {
         return $this->render('security/login.html.twig');
+    }
+
+    public function accessForbidden()
+    {
+        throw new AccessDeniedException();
     }
 }

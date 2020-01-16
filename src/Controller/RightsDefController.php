@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
+use stdClass;
 use App\Entity\RightsDef;
 use App\Entity\UserRights;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 
 
 
@@ -85,5 +86,23 @@ class RightsDefController extends AbstractController
         ]);
     }
 
-    
+
+    /**
+     * @Route("/convert", name="droit_converted", methods={"GET"})
+     */
+    public function userHaveDroit()
+    {
+        $userconnect = $this->getUser();
+        $userconnect->getrowid();
+        $iduser = $userconnect->getrowid();
+        
+        $repository = $this->getDoctrine()->getRepository(RightsDef::class);
+        $activedroit = $repository->listDroitActiver($iduser);
+
+       
+
+        return $this->render('default/testdroit.html.twig');
+
+    }
+        
 }

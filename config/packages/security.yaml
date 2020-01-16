@@ -45,6 +45,7 @@ security:
         - { path: ^/permission/liste, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/user/origin/list, roles: ROLE_USER }
         - { path: ^/permission/droit/, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/permission/convert, roles: IS_AUTHENTICATED_FULLY }
         
         
         
