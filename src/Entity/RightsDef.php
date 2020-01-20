@@ -4,11 +4,11 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * RightsDef
  *
  * @ORM\Table(name="rights_def")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\RightsDefRepository")
  */
 class RightsDef
 {
@@ -70,7 +70,7 @@ class RightsDef
      *
      * @ORM\Column(name="bydefault", type="boolean", nullable=true)
      */
-    private $bydefault;
+    private $bydefault = '0';
 
     public function getId(): ?int
     {
@@ -154,5 +154,5 @@ class RightsDef
         return $this;
     }
 
-
+    
 }

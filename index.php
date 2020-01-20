@@ -4,7 +4,7 @@ use App\Kernel;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
-require dirname(__DIR__).'/E-rh/config/bootstrap.php';
+require dirname(__DIR__).'/of_ERH/config/bootstrap.php';
 
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
@@ -26,3 +26,14 @@ $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
  
+//  <VirtualHost *:80>
+//     ServerAdmin openflex.eric@admin
+//     ServerName openflex.eric
+//     ServerAlias www.openflex.eric
+//     DocumentRoot /var/www/html/eric/openflex/openflex/htdocs/
+//     ErrorLog ${APACHE_LOG_DIR}/error.log
+//     CustomLog ${APACHE_LOG_DIR}/access.log combined
+//     <directory /var/www/html/web/openflex/openflex/htdocs/>
+// 	AllowOverride All
+//     </Directory>
+// </VirtualHost>

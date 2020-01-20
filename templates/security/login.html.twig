@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Openflex 2.0</title>
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="stylesheet" href="{{server_url()}}/of_ERH/public/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{server_url()}}/of_ERH/public/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="{{server_url()}}/of_ERH/public/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="{{server_url()}}/of_ERH/public/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{server_url()}}/of_ERH/public/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="{{server_url()}}/of_ERH/public/dist/css/adminlte.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+        rel="stylesheet" type='text/css' media='all' />
+
+{% block stylesheets %}{% endblock %}
+
+</head>
+
+ {% block body %}
+ <body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="card">
+            <div class="card-body login-card-body">
+                <div class="login-logo mb-4">
+                    <img src="{{server_url()}}/of_ERH/public/images/openflex.png" alt="logo Openflex">
+                    <p>Openflex 2.0</p>
+                </div>
+
+                <form action="{{ path('security_login') }}" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Login" required name="_username">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-4">
+                        <input type="password" class="form-control" placeholder="Password" required name="_password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="icheck-primary mb-2">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">
+                                    Remember Me
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-outline-primary btn-block">Sign In</button>
+                        </div>
+                    </div>
+                </form>
+                <p class="mb-1 mt-3">
+                    <a href="#">I forgot my password</a>
+                </p>
+                <p class="mb-0">
+                    <a href="#" class="text-center">Register a new membership</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+ {% endblock %}
+
+    <script src="{{server_url()}}/of_ERH/public/plugins/jquery/jquery.min.js"></script>
+    <script src="{{server_url()}}/of_ERH/public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{server_url()}}/of_ERH/public/dist/js/adminlte.min.js"></script>
+
+ {% block javascripts %}{% endblock %}
+
+</body>
+</html>

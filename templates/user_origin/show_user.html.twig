@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Un utilisateur{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+              <h1> Utilisateur</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
+                    <table id="example1" class="table table-responsive-md table-condensed" role="grid">
+                      <thead>
+                            <tbody>
+                                <tr>
+                                    <th>Rowid</th>
+                                    <td>{{ user_origin.rowid }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Employee</th>
+                                    <td>{{ user_origin.employee ? 'Yes' : 'No' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>FkEstablishment</th>
+                                    <td>{{ user_origin.fkEstablishment }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Datec</th>
+                                    <td>{{ user_origin.datec ? user_origin.datec|date('Y-m-d H:i:s') : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tms</th>
+                                    <td>{{ user_origin.tms ? user_origin.tms|date('Y-m-d H:i:s') : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Lastname</th>
+                                    <td>{{ user_origin.lastname }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Firstname</th>
+                                    <td>{{ user_origin.firstname }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>{{ user_origin.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Admin</th>
+                                    <td>{{ user_origin.admin }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Statut</th>
+                                    <td>{{ user_origin.statut ? 'Yes' : 'No' }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <a href="{{ path('user_origin_index') }}" class="btn btn-primary">back to list</a>
+
+                        <a href="{{ path('user_origin_edit', {'rowid': user_origin.rowid}) }}" class="btn btn-success">edit</a>
+
+                        {{ include('user_origin/user_delete_form.html.twig') }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+{% endblock %}
