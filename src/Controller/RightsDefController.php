@@ -20,20 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  */
 class RightsDefController extends AbstractController
 {
-    /**
-     * @Route("/liste", name="rights_def_index", methods={"GET","POST"})
-     */
-    public function index(): Response
-    {
-        $rightsDefs = $this->getDoctrine()
-            ->getRepository(RightsDef::class)
-            ->findAll();
-
-        return $this->render('rights_def/index.html.twig', [
-            'rights_defs' => $rightsDefs,
-        ]);
-    }
-
+   
     /**
      * @Route("/droit/{rowid}/user", name="activation_droit", methods={"GET"})
      */

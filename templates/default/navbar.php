@@ -3,7 +3,7 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link d-lg-none" data-widget="pushmenu" href="#"><img src="/public/images/openflex.png" alt="Openflex.cloud Logo" class="brand-image img-fluid"
+            <a class="nav-link d-lg-none" data-widget="pushmenu" href="#"><img src="{{server_url()}}/public/images/openflex.png" alt="Openflex.cloud Logo" class="brand-image img-fluid"
            style="opacity: 0.8; height:33px;margin-top: -7px;"></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
@@ -51,7 +51,7 @@
         <li class="nav-item dropdown">
             
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <img src="/public/images/andry.jpg" class="img-circle img-fluid" style="height:25px; margin-right:5px;vertical-align: top;" alt="User Image"> 
+                <img src="{{server_url()}}/public/images/andry.jpg" class="img-circle img-fluid" style="height:25px; margin-right:5px;vertical-align: top;" alt="User Image"> 
                 <span>Andry</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
