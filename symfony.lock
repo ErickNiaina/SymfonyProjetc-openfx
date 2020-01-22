@@ -435,9 +435,6 @@
     "twig/twig": {
         "version": "v2.12.2"
     },
-    "vlucas/phpdotenv": {
-        "version": "v2.6.1"
-    },
     "zendframework/zend-code": {
         "version": "3.4.1"
     },

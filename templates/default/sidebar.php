@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-light-primary">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link" data-widget="pushmenu">
-      <img src="/public/images/openflex.png" alt="Openflex.cloud Logo" class="brand-image img-circle"
+      <img src="{{server_url()}}/of_ERH/public/images/openflex.png" alt="Openflex.cloud Logo" class="brand-image img-circle"
            style="opacity: 0.8">
       <span class="brand-text font-weight-light title-text">Openflex 2.0</span>
     </a>

@@ -12,8 +12,9 @@ class DefaultController extends AbstractController
     /**
      * @Route("/pointage", name="pointage")
      */
-    public function index()
+    public function index(Request $request)
     {
+        dump($request->getLocale());
         return $this->render('default/index.html.twig');
     }
 }

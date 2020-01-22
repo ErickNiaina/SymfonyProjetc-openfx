@@ -26,3 +26,14 @@ $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
  
+//  <VirtualHost *:80>
+//     ServerAdmin openflex.eric@admin
+//     ServerName openflex.eric
+//     ServerAlias www.openflex.eric
+//     DocumentRoot /var/www/html/eric/openflex/openflex/htdocs/
+//     ErrorLog ${APACHE_LOG_DIR}/error.log
+//     CustomLog ${APACHE_LOG_DIR}/access.log combined
+//     <directory /var/www/html/web/openflex/openflex/htdocs/>
+// 	AllowOverride All
+//     </Directory>
+// </VirtualHost>

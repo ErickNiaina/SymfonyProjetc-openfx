@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Openflex 2.0</title>
     <link rel="icon" type="image/png" href="img/favicon.png" />
-    <link rel="stylesheet" href="public/plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="public/plugins/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="public/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-    <link rel="stylesheet" href="public/plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="public/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-    <link rel="stylesheet" href="public/dist/css/adminlte.css">
+    <link rel="stylesheet" href="{{server_url()}}/of_ERH/public/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{server_url()}}/of_ERH/public/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="{{server_url()}}/of_ERH/public/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="{{server_url()}}/of_ERH/public/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{server_url()}}/of_ERH/public/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="{{server_url()}}/of_ERH/public/dist/css/adminlte.css">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
@@ -28,7 +28,7 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <div class="login-logo mb-4">
-                    <img src="public/images/openflex.png" alt="logo Openflex">
+                    <img src="{{server_url()}}/of_ERH/public/images/openflex.png" alt="logo Openflex">
                     <p>Openflex 2.0</p>
                 </div>
 
@@ -75,9 +75,9 @@
 
  {% endblock %}
 
-    <script src="../../plugins/jquery/jquery.min.js"></script>
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../../dist/js/adminlte.min.js"></script>
+    <script src="{{server_url()}}/of_ERH/public/plugins/jquery/jquery.min.js"></script>
+    <script src="{{server_url()}}/of_ERH/public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{server_url()}}/of_ERH/public/dist/js/adminlte.min.js"></script>
 
  {% block javascripts %}{% endblock %}
 
