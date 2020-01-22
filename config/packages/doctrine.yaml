@@ -1,6 +1,9 @@
+imports:
+    - { resource: openflex_db_config.php }
+
 doctrine:
     dbal:
-        url: '%env(resolve:DATABASE_URL)%'
+        url: '%openflex_db_param%'
         schema_filter: ~^(?!llx_bank_class|llx_holiday_users|llx_opensurvey_user_formanswers|llx_stock_temp|llx_stock_toremove|llx_user_param)~
 
         # IMPORTANT: You MUST configure your server version,
