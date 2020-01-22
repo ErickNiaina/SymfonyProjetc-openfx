@@ -20,7 +20,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  */
 class RightsDefController extends AbstractController
 {
-   
     /**
      * @Route("/droit/{rowid}/user", name="activation_droit", methods={"GET"})
      */
