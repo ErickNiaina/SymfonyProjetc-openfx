@@ -52,7 +52,7 @@
                                 <td>
                                     <a href="{{ path('user_origin_show', {'rowid': user_origin.rowid}) }}" class="btn btn-warning">show</a>
                                     <a href="{{ path('user_origin_edit', {'rowid': user_origin.rowid}) }}" class="btn btn-primary">edit</a>
-                                    <a href="{{ path('activation_droit', {'rowid': user_origin.rowid}) }}" class="btn btn-success">voir droit</a>
+                                    <a href="{{ path('list_permission', {'rowid': user_origin.rowid}) }}" class="btn btn-success">voir droit</a>
                                 </td>
                             </tr>
                         {% else %}

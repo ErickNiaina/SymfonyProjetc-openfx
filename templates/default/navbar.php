@@ -51,8 +51,8 @@
         <li class="nav-item dropdown">
             
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <img src="{{server_url()}}/public/images/andry.jpg" class="img-circle img-fluid" style="height:25px; margin-right:5px;vertical-align: top;" alt="User Image"> 
-                <span>Andry</span>
+                <img src="{{server_url()}}/of_ERH/public/images/andry.jpg" class="img-circle img-fluid" style="height:25px; margin-right:5px;vertical-align: top;" alt="User Image"> 
+                <span>{{app.user.username}}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <a href="#" class="dropdown-item dropdown-footer">Mon compte</a>

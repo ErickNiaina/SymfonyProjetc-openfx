@@ -184,6 +184,9 @@
     "symfony/event-dispatcher-contracts": {
         "version": "v1.1.7"
     },
+    "symfony/expression-language": {
+        "version": "v4.4.3"
+    },
     "symfony/filesystem": {
         "version": "v4.4.1"
     },
@@ -293,6 +296,9 @@
             "config/routes.yaml"
         ]
     },
+    "symfony/security": {
+        "version": "v4.4.3"
+    },
     "symfony/security-bundle": {
         "version": "4.4",
         "recipe": {
@@ -304,15 +310,6 @@
         "files": [
             "config/packages/security.yaml"
         ]
-    },
-    "symfony/security-core": {
-        "version": "v4.4.2"
-    },
-    "symfony/security-csrf": {
-        "version": "v4.4.2"
-    },
-    "symfony/security-guard": {
-        "version": "v4.4.2"
     },
     "symfony/security-http": {
         "version": "v4.4.2"
