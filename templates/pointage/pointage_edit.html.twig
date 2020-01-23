@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pointage modifier{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+            
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <div class="col-6">
+                        <h4 class="titre">Modification Pointage</h4></div>
+                    <div class="col-6 text-right"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="animated fadeInLeft delay-1s content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <form id="ndform" method="POST" action="">
+                                    <div class="form-group row">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 row p-3">
+                                            <label class=" col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 fieldrequired">Nom Employ&eacute;</label>
+                                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                <select class="form-control select2 select2-hidden-accessible" style="width:100%;" name="fk_employer">
+                                                    <option value="0"></option>
+                                                    <option value="1">Fabi</option>
+                                                    <option selected value="3">BUMBA</option>
+                                                    <option value="10">ERTEE</option>
+                                                    <option value="25">MALALA kely</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 row p-3">
+                                            <label for="pointage_arrivee" class=" col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <span class="Cpointage_arrivee">Date Entr&eacute;e</span>
+                                            </label>
+                                            <div class="col-xl-4 col-lg-4 col-sm-4 col-md-4 col-xs-4">
+                                                <div class="input-group">
+                                                    <input id="pointageA" name="pointageA" type="text" class="form-control inputTheme" value="09/01/2020" disabled onChange="dpChangeDay('pointageA','dd/MM/yyyy'); ">
+                                                    <div class="input-group-append" data-target="#pointageAButton">
+                                                        <button id="pointageAButton" type="button" class="input-group-text"><i class="material-icons" style="font-size: 18px;">calendar_today</i><span class="icon-choisir-une-date icon-contenu"></span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" id="pointageAday" name="pointageAday" value="09">
+                                            <input type="hidden" id="pointageAmonth" name="pointageAmonth" value="01">
+                                            <input type="hidden" id="pointageAyear" name="pointageAyear" value="2020">
+                                            <input type="hidden" id="pointageAhour" name="pointageAhour" value="10">
+                                            <input type="hidden" id="pointageAmin" name="pointageAmin" value="00">
+                                            <div class="col-xl-4 col-lg-4 col-sm-4 col-md-4 col-xs-4 ">
+                                                <div class="input-group ">
+                                                    <input type="text" id="pointageA_heure" data-target="#pointageA_heure" data-toggle="datetimepicker" value="" name="pointageA_heure" class="form-control datetimepicker-input inputTheme" />
+                                                    <div class="input-group-append" data-target="#pointageA_heure" data-toggle="datetimepicker">
+                                                        <button id="pointageAButtonH" type="button" class="input-group-text"><i class="material-icons" style="font-size: 18px;">schedule</i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="offset-4 col-8 pt-2">
+                                                <button class="dpInvisibleButtons datenowlink" id="pointageAButtonNow" type="button" name="_useless" value="now">Maintenant</button>
+                                            </div>
+                                        </div>
+                                        <!-- /Date de arrivee -->
+
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 row p-3">
+                                            <label class="nowrap  col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">Note Entr&eacute;e</label>
+                                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                <input class=" inputTheme form-control" size="60" type="text" name="note_arrivee" value="entree">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 row p-3">
+                                            <label for="pointage_depart" class=" col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <span class="Cpointage_depart">Date Sortie</span>
+                                            </label>
+                                            <div class="col-xl-4 col-lg-4 col-sm-4 col-md-4 col-xs-4">
+                                                <div class="input-group">
+                                                    <input id="pointageD" name="pointageD" type="text" class="form-control inputTheme" value="09/01/2020" disabled onChange="dpChangeDay('pointageD','dd/MM/yyyy'); ">
+                                                    <div class="input-group-append" data-target="#pointageDButton">
+                                                        <button id="pointageDButton" type="button" class="input-group-text"><i class="material-icons" style="font-size: 18px;">calendar_today</i><span class="icon-choisir-une-date icon-contenu"></span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" id="pointageDday" name="pointageDday" value="09">
+                                            <input type="hidden" id="pointageDmonth" name="pointageDmonth" value="01">
+                                            <input type="hidden" id="pointageDyear" name="pointageDyear" value="2020">
+                                            <input type="hidden" id="pointageDhour" name="pointageDhour" value="17">
+                                            <input type="hidden" id="pointageDmin" name="pointageDmin" value="24">
+                                            <div class="col-xl-4 col-lg-4 col-sm-4 col-md-4 col-xs-4 ">
+                                                <div class="input-group ">
+                                                    <input type="text" id="pointageD_heure" data-target="#pointageD_heure" data-toggle="datetimepicker" value="" name="pointageD_heure" class="form-control datetimepicker-input inputTheme" />
+                                                    <div class="input-group-append" data-target="#pointageD_heure" data-toggle="datetimepicker">
+                                                        <button id="pointageDButtonH" type="button" class="input-group-text"><i class="material-icons" style="font-size: 18px;">schedule</i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="offset-4 col-8 pt-2">
+                                                <button class="dpInvisibleButtons datenowlink" id="pointageDButtonNow" type="button" name="_useless" value="now">Maintenant</button>
+                                            </div>
+                                        </div>
+                                        <!-- /Date de depart -->
+
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 row p-3">
+                                            <label class="nowrap  col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">Note Sortie</label>
+                                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                <input class=" inputTheme form-control" size="60" type="text" name="note_depart" value="sortie">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 row p-3">
+                                            <label class="nowrap  col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">Description</label>
+                                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                <textarea class="form-control" name="description" size="" wrap="soft" rows="2"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12  px-3">
+                                        <div class="col-12  px-3">
+                                            <div class="col-12  px-4">
+                                                <div class="col-12 text-right px-1 pb-3">
+                                                    <input type="submit" class="btn btn-outline-success btn-lg" name="save" value="Enregistrer"> &nbsp;
+                                                    <input type="submit" class="btn btn-outline-danger btn-lg" name="cancel" value="Annuler">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

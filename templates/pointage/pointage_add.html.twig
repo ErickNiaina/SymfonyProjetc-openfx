@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pointage liste{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">            
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <div class="col-6">
+                                <h4 class="titre">Nouveau Pointage</h4></div>
+                            <div class="col-6 text-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="animated fadeInLeft delay-1s content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <form id="ndform" method="POST" action="">
+                                            <div class="row add-pointage">
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 row p-3">
+                                                    <label class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 fieldrequired"><i class="fas fa-user"></i>&nbsp;Nom Employ&eacute;&nbsp; *</label>
+                                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                        <select class="form-control select2 select2-hidden-accessible" style="width:100%;" name="fk_employer">
+                                                            <option value="0"></option>
+                                                            <option value="1">Fabi</option>
+                                                            <option value="3">BUMBA</option>
+                                                            <option value="10">ERTEE</option>
+                                                            <option value="25">MALALA kely</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 row p-3">
+                                                    <label for="Etat" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                        <span class="fieldrequired"><i class="fa fa-cogs"></i>&nbsp;Etat&nbsp; *</span>
+                                                    </label>
+                                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                        <select id="etat" class="form-control select2 select2-hidden-accessible" style="width:100%;" name="etat">
+                                                            <option class="optiongrey" value="-1">&nbsp;</option>
+                                                            <option value="0">Entr&eacute;e</option>
+                                                            <option value="1">Sortie</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- /Produit à fabriquer -->
+
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 row p-3">
+                                                    <label for="pointage_arrivee" class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                        <span class="Cpointage_arrivee fieldrequired"><i class="far fa-clock"></i>&nbsp;Date&nbsp; *</span>
+                                                    </label>
+                                                    <div class="col-xl-4 col-lg-4 col-sm-4 col-md-4 col-xs-4">
+                                                        <div class="input-group" id="pointage">
+                                                            <input name="date" type="text" class="form-control docs-date" autocomplete="off" data-toggle="datepicker_add">
+                                                            <div class="input-group-append">
+                                                                <div class="input-group-text docs-datepicker-trigger"><i class="fas fa-calendar" style="font-size: 18px;"></i></div>
+                                                            </div>
+                                                            <div class="docs-datepicker-container"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-4 col-lg-4 col-sm-4 col-md-4 col-xs-4 ">
+                                                        <div class="input-group">
+                                                            <input type="text" id="pointage_heure" data-target="#pointage_heure" data-toggle="datetimepicker" value="" name="pointage_heure" class="form-control datetimepicker-input" />
+                                                            <div class="input-group-append" data-target="#pointage_heure" data-toggle="datetimepicker">
+                                                                <div class="input-group-text"><i class="fas fa-clock" style="font-size: 18px;"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="offset-4 col-8 pt-2">
+                                                        <button class="dpInvisibleButtons datenowlink" id="pointageButtonNow" type="button" name="_useless" value="now">Maintenant</button>
+                                                    </div>
+                                                </div>
+                                                <!-- /Date de planification -->
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 row p-3">
+                                                    <label class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4"><i class="fas fa-sticky-note"></i>&nbsp;Note</label>
+                                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                        <input class=" inputTheme form-control" size="60" type="text" name="note" value="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 row p-3">
+                                                    <label class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4"><i class="fas fa-envelope"></i>&nbsp;Description</label>
+                                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                        <textarea class="form-control" name="description" size="" wrap="soft" rows="2"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12  px-3">
+                                                    <div class="col-12  px-3">
+                                                        <div class="col-12  px-4">
+                                                            <div class="col-12 text-right px-1 pb-3">
+                                                                <input type="submit" class="btn btn-outline-success" name="add" value="Cr&eacute;er"> &nbsp;
+                                                                <input type="submit" class="btn btn-outline-danger" name="cancel" value="Annuler">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

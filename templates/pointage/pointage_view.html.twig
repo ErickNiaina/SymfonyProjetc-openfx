@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pointage{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <div class="col-6">
+                                <h4 class="titre">pointages</h4></div>
+                            <div class="col-6 text-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="animated fadeInRight delay-1s content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="clearfix">
+                                        <div class="float-right">
+                                            <ul class="pagination">
+                                                <li class="page-item noborder litext"><a class="page-link" data-role="button" data-iconpos="left" href="list_pointage.html">Retour liste</a></li>
+                                                <li class="page-item">
+                                                    <a class="page-link" data-role="button" data-icon="arrow-r" data-iconpos="left" href="list_pointage.html">
+                                                        <</a>
+                                                </li>
+                                                <li class="page-item"><a class="page-link" data-role="button" data-icon="arrow-l" data-iconpos="left" href="list_pointage.html">></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <table class="table table-responsive-md table-condensed">
+                                        <tr>
+                                            <th class="fieldrequired">Nom Employ&eacute;</th>
+                                            <td>
+                                                <div class="refid">BUMBA</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="nowrap">Fieldfk_user_author</th>
+                                            <td>SuperAdmin</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="nowrap">Etat</td>
+                                                <td>Sortie</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="nowrap">Date Entr&eacute;e</th>
+                                            <td>09-01-2020 09:00:00 </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="nowrap">Note Entr&eacute;e</th>
+                                            <td>entree</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="nowrap">Date Sortie</th>
+                                            <td>09-01-2020 16:24:00 </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="nowrap">Note Sortie</th>
+                                            <td>sortie</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="nowrap">Cr&eacute;e Le</th>
+                                            <td>06-01-2020 08:23:31 </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="nowrap">Modifi&eacute; Le</th>
+                                            <td>09-01-2020 16:57:37 </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="nowrap">Heures Effectu&eacute;es</th>
+                                            <td>07h 24min</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="nowrap">Fieldfk_user_modif</th>
+                                            <td>SuperAdmin</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="nowrap">Description</th>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="nowrap">Actif</th>
+                                            <td>Actif</td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <div class="clearfix">
+                                        <div class="float-right">
+                                            <div class="float-right"><a class="btn btn-outline-success" href="modify_pointage.html">Modifier</a>&nbsp;&nbsp;<a class="btn btn-outline-danger" href="list_pointage.html">Supprimer</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
