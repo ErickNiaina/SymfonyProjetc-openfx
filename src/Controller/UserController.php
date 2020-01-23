@@ -39,7 +39,7 @@ class UserController extends AbstractController
      * @Route("/registration", name="user_origin_new", methods={"GET","POST"})
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
-    public function registration(Request $request, UserPasswordEncoderInterface $encoder): Response
+    public function registration(Request $request, UserPasswordEncoderInterface $encoder,utilityService $utilservice): Response
     {
         $userOrigin = new UserOrigin();
         $form = $this->createForm(UserOriginType::class, $userOrigin);
@@ -47,11 +47,7 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $hash = $encoder->encodePassword($userOrigin, $userOrigin->getPassCrypted());
-            $crypt = $userOrigin->setPassCrypted($hash);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($userOrigin);
-            $entityManager->flush();
+            $utilservice->editOrAddUser($userOrigin,$encoder);
 
             return $this->redirectToRoute('user_origin_index');
         }
@@ -86,13 +82,9 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $hash = $encoder->encodePassword($userOrigin, $userOrigin->getPassCrypted());
-            $userOrigin->setPassCrypted($hash);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($userOrigin);
-            $entityManager->flush();
             
-
+            $utilsevice->editOrAddUser($userOrigin,$encoder);
+        
             return $this->redirectToRoute('user_origin_index');
         }
 

@@ -5,7 +5,6 @@ namespace App\Service;
 use App\Entity\RightsDef;
 use App\Entity\UserOrigin;
 use App\Entity\UserRights;
-use App\Form\UserOriginType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -25,6 +24,13 @@ class utilityService
     public function getOneUser($rowid){
         $oneUser = $this->em->getRepository(UserOrigin::class)->find($rowid);
         return $oneUser;
+    }
+
+    public function editOrAddUser(UserOrigin $userOrigin,UserPasswordEncoderInterface $encoder){
+        $hash = $encoder->encodePassword($userOrigin, $userOrigin->getPassCrypted());
+        $userOrigin->setPassCrypted($hash);
+        $this->em->persist($userOrigin);
+        $this->em->flush();
     }
 
 
