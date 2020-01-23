@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityRepository;
 class RightsDefRepository extends EntityRepository
 {
     
-    public function listOfUserPermission()
+    public function listOfUserRight()
     {
         $sql = "SELECT rd FROM App:RightsDef rd ORDER BY rd.module,rd.id";
         $result = $this->getEntityManager()->createQuery($sql)->getScalarResult();
@@ -16,7 +16,7 @@ class RightsDefRepository extends EntityRepository
         return $result;
     }
 
-    public function activatePermission($id)
+    public function setRightOfUser($id)
     {
         $sql = "SELECT ur,rd FROM App:UserRights  ur 
                 INNER JOIN App:RightsDef rd WITH ur.fkId = rd.id WHERE ur.fkUser = $id ORDER BY rd.module,rd.id";
@@ -28,7 +28,7 @@ class RightsDefRepository extends EntityRepository
     }
 
 
-    public function deactivatePermission($fkid,$fkuser)
+    public function unsetRightOfUser($fkid,$fkuser)
     {
         $sql = "DELETE  FROM App:UserRights  ur 
                  WHERE ur.fkId = $fkid AND ur.fkUser = $fkuser";

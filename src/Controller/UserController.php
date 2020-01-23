@@ -82,7 +82,7 @@ class UserController extends AbstractController
     public function edit(Request $request,UserPasswordEncoderInterface $encoder,utilityService $utilsevice,$rowid): Response
     {
         $userOrigin = $utilsevice->getOneUser($rowid);
-        $form = $this->createForm(UserOriginType::class, $userOrigin);
+        $form = $this->createForm(UserOriginType::class,$userOrigin);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

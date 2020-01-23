@@ -29,17 +29,17 @@ class utilityService
 
 
     public function getAllRightUser(){
-        $permissionUser = $this->em->getRepository(RightsDef::class)->listOfUserPermission();
+        $permissionUser = $this->em->getRepository(RightsDef::class)->listOfUserRight();
         return $permissionUser;
     }
 
     public function getRightActive($rowid){
-        $permissionUseractive = $this->em->getRepository(RightsDef::class)->activatePermission($rowid);
+        $permissionUseractive = $this->em->getRepository(RightsDef::class)->setRightOfUser($rowid);
         return $permissionUseractive;
     }
 
     public function unsetRightUser($fk_id,$fk_user){
-        $permissionDesactivate = $this->em->getRepository(RightsDef::class)->deactivatePermission($fk_id,$fk_user);
+        $permissionDesactivate = $this->em->getRepository(RightsDef::class)->unsetRightOfUser($fk_id,$fk_user);
         return $permissionDesactivate;
     }
 
