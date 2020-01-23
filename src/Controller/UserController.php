@@ -79,13 +79,19 @@ class UserController extends AbstractController
      * @Route("/user/{rowid}/edit", name="user_origin_edit", methods={"GET","POST"})
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
-    public function edit(Request $request, UserOrigin $userOrigin): Response
+    public function edit(Request $request,UserPasswordEncoderInterface $encoder,utilityService $utilsevice,$rowid): Response
     {
+        $userOrigin = $utilsevice->getOneUser($rowid);
         $form = $this->createForm(UserOriginType::class, $userOrigin);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $hash = $encoder->encodePassword($userOrigin, $userOrigin->getPassCrypted());
+            $userOrigin->setPassCrypted($hash);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($userOrigin);
+            $entityManager->flush();
+            
 
             return $this->redirectToRoute('user_origin_index');
         }
