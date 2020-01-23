@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pointage configuration{% endblock %}
+
+{% block body %}
+<div class="content-wrapper">
+    <div class="animated zoomIn delay-1s content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+                    <div class="card card-danger collapsed-card">
+                        <div class="card-header">
+                            <h4 class="card-title" style="font-size:1.5rem"><i class="fas fa-ban"></i> Droit Utilisateur</h4>
+                            <div class="card-tools">
+                                <button type="button" class="btn text-white" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body" style="display: block;">Acc&egrave;s refus&eacute;.
+                            <br>Vous essayez d&#039;acc&eacute;der &agrave; une page, r&eacute;gion ou fonctionalit&eacute; d&#039;un module d&eacute;sactiv&eacute;, ou sans &ecirc;tre dans une session authentifi&eacute;e, ou avec un utilisateur non autoris&eacute;.
+                        </div>
+                    </div>
+                    <div class="card card-widget widget-user-2">
+                        <div class="widget-user-header p-4 mb-1">
+                            <div class="widget-user-image">
+                                <img class="img-circle" src="{{server_url()}}/of_ERH/public/images/andry.jpg" alt="User Avatar">
+                            </div>
+                            <h4 class="widget-user-username">Identifiant courant</h4>
+                            <h5 class="widget-user-desc">admin</h5>
+                            <div class="card-footer mt-4 p-4 bg-light">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <p>Les permissions pour cet identifiant peuvent &ecirc;tre attribu&eacute;es par l&#039;administrateur Openflex via le menu Accueil -> Utilisateurs.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
