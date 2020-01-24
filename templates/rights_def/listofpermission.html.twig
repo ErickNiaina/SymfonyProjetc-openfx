@@ -46,11 +46,11 @@
                                 <td>
                           {% if app.user.admin == 1 %}
 
-                                  {% if droitactiver[i] is defined %}
+                                  {% if activatedperms[i] is defined %}
                   
-                                        {% if(droitactiver[i].ur_fkId  in [value.rd_id])%}
+                                        {% if(activatedperms[i].ur_fkId  in [value.rd_id])%}
                                               <div class="pull-left">
-                                                  <a  href="{{ path('desactiver_droit', {'fk_id': droitactiver[i].ur_fkId,'fk_user':droitactiver[i].ur_fkUser}) }}">
+                                                  <a  href="{{ path('deactivated_permission', {'fk_id': activatedperms[i].ur_fkId,'fk_user':activatedperms[i].ur_fkUser}) }}">
                                                       <span class="glyphicon glyphicon-minus"></span>
                                                   </a>
                                               </div>
@@ -61,19 +61,19 @@
                                               </div>
                                               {% set i = i + 1 %}
                                                   
-                                              {% if i  == droitactiver|length %}
+                                              {% if i  == activatedperms|length %}
                                                 {% set i = i - 1 %}
                                               {% endif %}
                                         {% else %}
-                                            {% if(droitactiver[i].ur_fkId  not in [value.rd_id]) %}
-                                                  <a href="{{ path('activer_droit', {'fk_id': value.rd_id,'fk_user':droitactiver[i].ur_fkUser}) }}">
+                                            {% if(activatedperms[i].ur_fkId  not in [value.rd_id]) %}
+                                                  <a href="{{ path('permission_activate', {'fk_id': value.rd_id,'fk_user':activatedperms[i].ur_fkUser}) }}">
                                                     <span class="glyphicon glyphicon-plus"></span>
                                                   </a> 
                                             {% endif %} 
                                         {% endif %} 
 
                                   {% else %}
-                                      <a href="{{ path('activer_droit', {'fk_id': value.rd_id,'fk_user':sessionuser}) }}">
+                                      <a href="{{ path('permission_activate', {'fk_id': value.rd_id,'fk_user':sessionuser}) }}">
                                         <span class="glyphicon glyphicon-plus"></span>
                                       </a>
                                   {% endif %}
@@ -81,11 +81,11 @@
 
                           {% else %}
                             
-                          {% if droitactiver[i] is defined %}
+                          {% if activatedperms[i] is defined %}
                                             
-                              {% if(droitactiver[i].ur_fkId  in [value.rd_id])%}
+                              {% if(activatedperms[i].ur_fkId  in [value.rd_id])%}
                                     <div class="pull-left">
-                                        <a  href="{{ path('desactiver_droit', {'fk_id': droitactiver[i].ur_fkId,'fk_user':droitactiver[i].ur_fkUser}) }}" class="btn  disabled">
+                                        <a  href="{{ path('deactivated_permission', {'fk_id': activatedperms[i].ur_fkId,'fk_user':activatedperms[i].ur_fkUser}) }}" class="btn  disabled">
                                             <span class="glyphicon glyphicon-minus"></span>
                                         </a>
                                     </div>
@@ -96,19 +96,19 @@
                                     </div>
                                     {% set i = i + 1 %}
                                         
-                                    {% if i  == droitactiver|length %}
+                                    {% if i  == activatedperms|length %}
                                       {% set i = i - 1 %}
                                     {% endif %}
                               {% else %}
-                                  {% if(droitactiver[i].ur_fkId  not in [value.rd_id]) %}
-                                        <a href="{{ path('activer_droit', {'fk_id': value.rd_id,'fk_user':droitactiver[i].ur_fkUser}) }}" class="btn  disabled">
+                                  {% if(activatedperms[i].ur_fkId  not in [value.rd_id]) %}
+                                        <a href="{{ path('permission_activate', {'fk_id': value.rd_id,'fk_user':activatedperms[i].ur_fkUser}) }}" class="btn  disabled">
                                           <span class="glyphicon glyphicon-plus"></span>
                                         </a> 
                                   {% endif %} 
                               {% endif %} 
 
                             {% else %}
-                              <a href="{{ path('activer_droit', {'fk_id': value.rd_id,'fk_user':sessionuser}) }}" class="btn  disabled">
+                              <a href="{{ path('permission_activate', {'fk_id': value.rd_id,'fk_user':sessionuser}) }}" class="btn  disabled">
                                 <span class="glyphicon glyphicon-plus"></span>
                               </a>
                             {% endif %}

@@ -25,23 +25,22 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
         public function getFunctions()
         {
             return [
-                new TwigFunction('droitperms', [$this, 'userhavedroitperms']),
-                new TwigFunction('droitsubperms', [$this, 'userhavedroitsubperms']), 
+                new TwigFunction('filtreOfperms', [$this, 'userhaveperms']),
+                new TwigFunction('filtreOfsubperms', [$this, 'userhavesubperms']), 
             ];
         }
 
 
-        public function userhavedroitperms($module,$perms,$subperms)
+        public function userhaveperms($module,$perms,$subperms)
         {
             $user = $this->tokenStorage->getToken()->getUser();
             $iduser = $user->getrowid();
 
-            $droitactiver = $this->em->getRepository(RightsDef::class)->listDroitActiver($iduser);
-            dump($droitactiver);
+            $permissionActivate = $this->em->getRepository(RightsDef::class)->activatePermission($iduser);
             
             
-            if((array_search($module, array_column($droitactiver, 'rd_module')) !== False) && (array_search($perms, array_column($droitactiver, 'rd_perms')) !== False)
-                && (array_search($subperms, array_column($droitactiver, 'rd_subperms')) !== False)) {
+            if((array_search($module, array_column($permissionActivate, 'rd_module')) !== False) && (array_search($perms, array_column($permissionActivate, 'rd_perms')) !== False)
+                && (array_search($subperms, array_column($permissionActivate, 'rd_subperms')) !== False)) {
                 return  true;
             } else {
                 return false;
@@ -50,14 +49,14 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
         }
 
 
-        public function userhavedroitsubperms($module,$perms)
+        public function userhavesubperms($module,$perms)
         {
             $user = $this->tokenStorage->getToken()->getUser();
             $iduser = $user->getrowid();
             
-            $droitactiver = $this->em->getRepository(RightsDef::class)->listDroitActiver($iduser);
+            $permissionActivate = $this->em->getRepository(RightsDef::class)->activatePermission($iduser);
 
-            if((array_search($module, array_column($droitactiver, 'rd_module')) !== False) && (array_search($perms, array_column($droitactiver, 'rd_perms')) !== False)) {
+            if((array_search($module, array_column($permissionActivate, 'rd_module')) !== False) && (array_search($perms, array_column($permissionActivate, 'rd_perms')) !== False)) {
                 return  true;
             } else {
                 return  false;

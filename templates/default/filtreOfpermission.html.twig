@@ -1,4 +1,4 @@
-{% if (droitperms('agenda','myactions','delete')) %}
+{% if (filtreOfperms('agenda','myactions','delete')) %}
     <h4>HAVE A PERMISSION</h4>
 {% else %}
     {{render(controller('App\\Controller\\SecurityController::accessForbidden'))}}
@@ -7,7 +7,7 @@
 
 
 
-{% if (droitsubperms('produit','export')) %}
+{% if (filtreOfsubperms('produit','export')) %}
     <h4>SUCCESSFULLY</h4>
 {% else %}
    {{render(controller('App\\Controller\\SecurityController::accessForbidden'))}}

@@ -22,12 +22,12 @@ security:
             form_login:
                 login_path: security_login
                 check_path: security_login
-                default_target_path: /pointage
+                default_target_path: /example.com
                 
             
             logout:
                 path: security_logout
-                target: /user/origin/list
+                target: /login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -40,12 +40,7 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/pointage, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/user/origin/registration, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/permission/liste, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/user/origin/list, roles: ROLE_USER }
-        - { path: ^/permission/droit/, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/permission/convert, roles: IS_AUTHENTICATED_FULLY }
+        
         
         
         
